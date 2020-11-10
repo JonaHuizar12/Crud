@@ -1,3 +1,4 @@
+<?php $__env->startSection('content'); ?>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -5,15 +6,14 @@
             <a class="btn btn-success mb-5" href="<?php echo e(url('/form')); ?>"><i class="fas fa-plus"></i> Agregar Estudiante</a>
             <a class="btn btn-success mb-5" href="<?php echo e(url('/grupos')); ?>"><i class="fas fa-list"></i> Lista de Grupos</a>
 
-            <!--Mensaje de Borrar-->
-
-            <?php if(session('estudianteEliminado')): ?>
+            <!--Mensaje Flash-->
+            <?php if(session('success')): ?>
             <div class="alert alert-success text-center">
-            <?php echo e(session('estudianteEliminado')); ?>
+            <?php echo e(session ('success')); ?>
 
             </div>
             <?php endif; ?>
-            
+
             <table class="table table-bordered table-striped text-center">
                 <thead>
                 <tr>
@@ -32,7 +32,7 @@
                 <?php $__currentLoopData = $estudiantes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $students): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td><?php echo e($students->id); ?></td>
-                        <td><?php echo e($students->grupo); ?></td>
+                        <td><?php echo e($students->grupo_id); ?></td>
                         <td><?php echo e($students->nombre); ?></td>
                         <td><?php echo e($students->apellidos); ?></td>
                         <td><?php echo e($students->edad); ?></td>
@@ -65,4 +65,5 @@
         </div>
     </div>
 </div>
+<?php $__env->stopSection(); ?>
 <?php echo $__env->make('layout.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/jonathan/Escritorio/CrudV2/resources/views/estudiantes/listar.blade.php ENDPATH**/ ?>

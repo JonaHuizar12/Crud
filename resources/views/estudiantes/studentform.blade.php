@@ -1,14 +1,15 @@
-@extends('layout.base');
-
+@extends('layout.base')
+@section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-7 mt-5">
-        <!--Mensaje Flash-->
-        @if(session('estudianteGuardado'))
-        <div class="alert alert-success text-center">
-            {{ session ('estudianteGuardado')}}
-        </div>
-        @endif
+
+          <!--Mensaje Flash-->
+          @if(session('success'))
+            <div class="alert alert-success text-center">
+            {{ session('success')}}
+            </div>
+            @endif
 
          <!--Validación de Errores-->
          @if($errors->any())
@@ -28,10 +29,10 @@
                     <div class="card-body"> 
                         <div class="row form-group">
                          <label for="" class="col-2">Grupo</label>
-                         <select name="grupo" class="form-control col-md-9">
+                         <select name="grupo"  class="form-control col-md-9">
                          <option value="">Seleccione un grupo</option>
                          @foreach($grupos as $grupo)
-                         <option value="{{$grupo['id']}}">{{$grupo['grupo']}}</option>
+                         <option value="{{$grupo['id']}}" {{old('grupo') == $grupo['id'] ? 'selected' : ''}}>{{$grupo['grupo']}}</option>
                          @endforeach
                          </select>
                         </div>
@@ -66,3 +67,4 @@
 
     <a class="btn btn-success mb-5" href="{{ url('/')}}"><i class="fas fa-arrow-circle-left"></i> Volver</a>
 </div>
+@endsection

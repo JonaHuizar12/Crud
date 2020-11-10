@@ -15,13 +15,20 @@ class CreateEstudiantesTable extends Migration
     {
         Schema::create('estudiantes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('grupo');
+            $table->integer('grupo_id')->unsigned();
+            $table->foreign('grupo_id')
+            ->references('id')
+            ->on('grupos')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->string('nombre');
             $table->string('apellidos');
             $table->string('edad');
             $table->string('email');
             $table->string('telefono');
             $table->timestamps();
+
+            
         });
     }
 

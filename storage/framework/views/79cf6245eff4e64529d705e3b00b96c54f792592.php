@@ -1,15 +1,15 @@
-;
-
+<?php $__env->startSection('content'); ?>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-7 mt-5">
-        <!--Mensaje Flash-->
-        <?php if(session('estudianteGuardado')): ?>
-        <div class="alert alert-success text-center">
-            <?php echo e(session ('estudianteGuardado')); ?>
 
-        </div>
-        <?php endif; ?>
+          <!--Mensaje Flash-->
+          <?php if(session('success')): ?>
+            <div class="alert alert-success text-center">
+            <?php echo e(session('success')); ?>
+
+            </div>
+            <?php endif; ?>
 
          <!--Validación de Errores-->
          <?php if($errors->any()): ?>
@@ -29,10 +29,10 @@
                     <div class="card-body"> 
                         <div class="row form-group">
                          <label for="" class="col-2">Grupo</label>
-                         <select name="grupo" class="form-control col-md-9">
+                         <select name="grupo"  class="form-control col-md-9">
                          <option value="">Seleccione un grupo</option>
                          <?php $__currentLoopData = $grupos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $grupo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                         <option value="<?php echo e($grupo['id']); ?>"><?php echo e($grupo['grupo']); ?></option>
+                         <option value="<?php echo e($grupo['id']); ?>" <?php echo e(old('grupo') == $grupo['id'] ? 'selected' : ''); ?>><?php echo e($grupo['grupo']); ?></option>
                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                          </select>
                         </div>
@@ -67,4 +67,5 @@
 
     <a class="btn btn-success mb-5" href="<?php echo e(url('/')); ?>"><i class="fas fa-arrow-circle-left"></i> Volver</a>
 </div>
+<?php $__env->stopSection(); ?>
 <?php echo $__env->make('layout.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/jonathan/Escritorio/CrudV2/resources/views/estudiantes/studentform.blade.php ENDPATH**/ ?>

@@ -36,10 +36,15 @@ class StudentController extends Controller
             
         ]);
 
-        $studentdata = request()->except('_token');
-        Estudiante::insert($studentdata);
-
-        return back()->with('estudianteGuardado','Estudiante Guardado Exitosamente');
+        $student = new Estudiante;
+        $student->grupo_id= $request->grupo;
+        $student->nombre = $request->nombre;
+        $student->apellidos = $request->apellidos;
+        $student->edad = $request->edad;
+        $student->email = $request->email;
+        $student->telefono = $request->telefono;
+        $student->save();
+        return redirect()->route('listar_estudiantes')->with('success','Estudiante Guardado Exitosamente');
 
 
     }
@@ -49,7 +54,7 @@ class StudentController extends Controller
     public function delete($id){
         Estudiante::destroy($id);
 
-        return back()->with('estudianteEliminado', 'Estudiante Eliminado');
+        return back()->with('success', 'Estudiante Eliminado');
     }
 
     //Formulario Editar Estudiante
@@ -62,10 +67,17 @@ class StudentController extends Controller
 
     //Editar Estudiante
     public function edit(Request $request,$id){
-        $datosEstudiante = request()->except((['_token','_method']));
-        Estudiante::where('id', '=', $id)->update($datosEstudiante);
+        Estudiante::find($id)->update([
+            'grupo_id' => $request->grupo,
+            'nombre' => $request->nombre,
+            'apellidos' => $request->apellidos,
+            'edad' => $request->edad,
+            'email' => $request->email,
+            'telefono' => $request->telefono,
+            ]);
 
-        return back()->with('estudianteModificado','Usuario Modificado');
+
+            return redirect()->route('listar_estudiantes')->with('success','Usuario Modificado');
     }
 
 }

@@ -1,15 +1,8 @@
-;
-
+<?php $__env->startSection('content'); ?>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-7 mt-5">
-        <!--Mensaje Flash-->
-        <?php if(session('grupoGuardado')): ?>
-        <div class="alert alert-success text-center">
-            <?php echo e(session ('grupoGuardado')); ?>
-
-        </div>
-        <?php endif; ?>
+        
 
          <!--Validación de Errores-->
          <?php if($errors->any()): ?>
@@ -21,6 +14,8 @@
             </ul>
             </div>
             <?php endif; ?>
+            <!--Mensaje Flash-->
+           
             <div class="card">
                 <form action="<?php echo e(route('saveG')); ?>" method="POST">
                 <?php echo csrf_field(); ?>
@@ -50,4 +45,5 @@
 
     <a class="btn btn-success mb-5" href="<?php echo e(url('/grupos')); ?>"><i class="fas fa-arrow-circle-left"></i> Volver</a>
 </div>
+<?php $__env->stopSection(); ?>
 <?php echo $__env->make('layout.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/jonathan/Escritorio/CrudV2/resources/views/grupos/gruposform.blade.php ENDPATH**/ ?>

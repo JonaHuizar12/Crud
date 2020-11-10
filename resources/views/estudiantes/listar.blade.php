@@ -1,6 +1,6 @@
 @extends('layout.base')
 
-
+@section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -8,14 +8,13 @@
             <a class="btn btn-success mb-5" href="{{ url('/form')}}"><i class="fas fa-plus"></i> Agregar Estudiante</a>
             <a class="btn btn-success mb-5" href="{{ url('/grupos')}}"><i class="fas fa-list"></i> Lista de Grupos</a>
 
-            <!--Mensaje de Borrar-->
-
-            @if(session('estudianteEliminado'))
+            <!--Mensaje Flash-->
+            @if(session('success'))
             <div class="alert alert-success text-center">
-            {{ session('estudianteEliminado')}}
+            {{ session ('success')}}
             </div>
             @endif
-            
+
             <table class="table table-bordered table-striped text-center">
                 <thead>
                 <tr>
@@ -34,7 +33,7 @@
                 @foreach($estudiantes as $students)
                     <tr>
                         <td>{{ $students->id}}</td>
-                        <td>{{ $students->grupo}}</td>
+                        <td>{{ $students->grupo_id}}</td>
                         <td>{{ $students->nombre}}</td>
                         <td>{{ $students->apellidos}}</td>
                         <td>{{ $students->edad}}</td>
@@ -66,3 +65,4 @@
         </div>
     </div>
 </div>
+@endsection

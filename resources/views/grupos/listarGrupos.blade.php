@@ -1,20 +1,19 @@
 @extends('layout.base')
 
-
+@section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <h2 class="text-center mb-5">Grupos</h2>
             <a class="btn btn-success mb-5" href="{{ url('/formG')}}"><i class="fas fa-plus"></i> Agregar Grupo</a>
-
-            <!--Mensaje de Borrar-->
-
-            @if(session('grupoEliminado'))
+          
+            <!--Mensaje Flash-->
+            @if(session('success'))
             <div class="alert alert-success text-center">
-            {{ session('grupoEliminado')}}
+            {{ session('success')}}
             </div>
             @endif
-            
+
             <table class="table table-bordered table-striped text-center">
                 <thead>
                 <tr>
@@ -59,3 +58,4 @@
 
     <a class="btn btn-success mb-5" href="{{ url('/')}}"><i class="fas fa-arrow-circle-left"></i> Volver</a>
 </div>
+@endsection

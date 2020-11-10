@@ -1,18 +1,18 @@
+<?php $__env->startSection('content'); ?>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <h2 class="text-center mb-5">Grupos</h2>
             <a class="btn btn-success mb-5" href="<?php echo e(url('/formG')); ?>"><i class="fas fa-plus"></i> Agregar Grupo</a>
-
-            <!--Mensaje de Borrar-->
-
-            <?php if(session('grupoEliminado')): ?>
+          
+            <!--Mensaje Flash-->
+            <?php if(session('success')): ?>
             <div class="alert alert-success text-center">
-            <?php echo e(session('grupoEliminado')); ?>
+            <?php echo e(session('success')); ?>
 
             </div>
             <?php endif; ?>
-            
+
             <table class="table table-bordered table-striped text-center">
                 <thead>
                 <tr>
@@ -58,4 +58,5 @@
 
     <a class="btn btn-success mb-5" href="<?php echo e(url('/')); ?>"><i class="fas fa-arrow-circle-left"></i> Volver</a>
 </div>
+<?php $__env->stopSection(); ?>
 <?php echo $__env->make('layout.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/jonathan/Escritorio/CrudV2/resources/views/grupos/listarGrupos.blade.php ENDPATH**/ ?>

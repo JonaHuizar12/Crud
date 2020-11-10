@@ -1,14 +1,10 @@
-@extends('layout.base');
+@extends('layout.base')
 
+@section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-7 mt-5">
-        <!--Mensaje Flash-->
-        @if(session('grupoGuardado'))
-        <div class="alert alert-success text-center">
-            {{ session ('grupoGuardado')}}
-        </div>
-        @endif
+        
 
          <!--Validación de Errores-->
          @if($errors->any())
@@ -20,6 +16,8 @@
             </ul>
             </div>
             @endif
+            <!--Mensaje Flash-->
+           
             <div class="card">
                 <form action="{{ route('saveG')}}" method="POST">
                 @csrf
@@ -49,3 +47,4 @@
 
     <a class="btn btn-success mb-5" href="{{ url('/grupos')}}"><i class="fas fa-arrow-circle-left"></i> Volver</a>
 </div>
+@endsection
