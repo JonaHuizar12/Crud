@@ -22,32 +22,32 @@
                     <div class="card-body"> 
                         <div class="row form-group">
                             <label for="" class="col-2">Grupo</label>
-                            <select name="grupo" class="form-control col-md-9">
+                            <select name="grupo_id" class="form-control col-md-9">
                             <option selected>Seleccione un grupo</option>
                             @foreach($grupos as $grupo)
-                            <option value="{{$grupo['id']}}">{{$grupo['grupo']}}</option>
+                            <option value="{{$grupo['id']}}" {{old('grupo_id') == $grupo['id'] ? 'selected' : ''}}>{{$grupo['grupo']}}</option>
                             @endforeach
                          </select>
                         </div>
                         <div class="row form-group">
                          <label for="" class="col-2">Nombre</label>
-                         <input type="text" name="nombre" class="form-control col-md-9" value="{{ $estudiante->nombre}}">
+                         <input type="text" name="nombre" class="form-control col-md-9" value="{{ $estudiante->nombre}}" autocomplete = "off">
                         </div>
                         <div class="row form-group">
                          <label for="" class="col-2">Apellidos</label>
-                         <input type="text" name="apellidos" class="form-control col-md-9" value="{{ $estudiante->apellidos}}">
+                         <input type="text" name="apellidos" class="form-control col-md-9" value="{{ $estudiante->apellidos}}" autocomplete = "off">
                         </div>
                         <div class="row form-group">
                          <label for="" class="col-2">Edad</label>
-                         <input type="text" name="edad" class="form-control col-md-9" value="{{ $estudiante->edad}}">
+                         <input type="text" name="edad" class="form-control col-md-9" value="{{ $estudiante->edad}}" autocomplete = "off">
                         </div>
                         <div class="row form-group">
                          <label for="" class="col-2">Email</label>
-                         <input type="text" name="email" class="form-control col-md-9" value="{{ $estudiante->email}}">
+                         <input type="text" name="email" class="form-control col-md-9" value="{{ $estudiante->email}}" autocomplete = "off">
                         </div>
                         <div class="row form-group">
                          <label for="" class="col-2">Teléfono</label>
-                         <input type="text" name="telefono" class="form-control col-md-9" value="{{ $estudiante->telefono}}">
+                         <input type="text" name="telefono" class="form-control col-md-9" value="{{ $estudiante->telefono}}" autocomplete = "off">
                         </div>
                         <div class="row form-group">
                         <button type="submit" class="btn btn-success col-md-9 offset-2"><i class="fas fa-save"></i> Modificar</button>

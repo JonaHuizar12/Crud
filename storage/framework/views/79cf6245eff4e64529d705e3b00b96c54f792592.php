@@ -29,10 +29,10 @@
                     <div class="card-body"> 
                         <div class="row form-group">
                          <label for="" class="col-2">Grupo</label>
-                         <select name="grupo"  class="form-control col-md-9">
+                         <select name="grupo_id"  class="form-control col-md-9">
                          <option value="">Seleccione un grupo</option>
                          <?php $__currentLoopData = $grupos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $grupo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                         <option value="<?php echo e($grupo['id']); ?>" <?php echo e(old('grupo') == $grupo['id'] ? 'selected' : ''); ?>><?php echo e($grupo['grupo']); ?></option>
+                         <option value="<?php echo e($grupo['id']); ?>" <?php echo e(old('grupo_id') == $grupo['id'] ? 'selected' : ''); ?>><?php echo e($grupo['grupo']); ?></option>
                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                          </select>
                         </div>

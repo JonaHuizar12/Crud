@@ -27,7 +27,7 @@ class StudentController extends Controller
     public function save(Request $request){
 
         $validator = $this->validate($request, [
-            'grupo'=>'required|string|max:40',
+            'grupo_id'=>'required|string|max:40',
             'nombre'=>'required|string|max:20',
             'apellidos'=>'required|string|max:30',
             'edad'=>'required|string|max:2',
@@ -37,7 +37,7 @@ class StudentController extends Controller
         ]);
 
         $student = new Estudiante;
-        $student->grupo_id= $request->grupo;
+        $student->grupo_id= $request->grupo_id;
         $student->nombre = $request->nombre;
         $student->apellidos = $request->apellidos;
         $student->edad = $request->edad;
@@ -67,8 +67,16 @@ class StudentController extends Controller
 
     //Editar Estudiante
     public function edit(Request $request,$id){
+        
+        $validator = $this->validate($request, [
+            'grupo_id'=>'required|string|max:40',
+            'nombre'=>'required|string|max:20',
+            'apellidos'=>'required|string|max:30',
+            'edad'=>'required|string|max:2',
+            ]);
+
         Estudiante::find($id)->update([
-            'grupo_id' => $request->grupo,
+            'grupo_id' => $request->grupo_id,
             'nombre' => $request->nombre,
             'apellidos' => $request->apellidos,
             'edad' => $request->edad,

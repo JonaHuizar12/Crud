@@ -129,7 +129,7 @@ return [
     */
 
     'custom' => [
-        'grupo' => [
+        'grupo_id' => [
             'required' => 'El grupo es requerido',
             'string' => 'El grupo tiene que ser un texto',
             'max:10' => 'El grupo es demasiado lago'

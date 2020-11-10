@@ -29,10 +29,10 @@
                     <div class="card-body"> 
                         <div class="row form-group">
                          <label for="" class="col-2">Grupo</label>
-                         <select name="grupo"  class="form-control col-md-9">
+                         <select name="grupo_id"  class="form-control col-md-9">
                          <option value="">Seleccione un grupo</option>
                          @foreach($grupos as $grupo)
-                         <option value="{{$grupo['id']}}" {{old('grupo') == $grupo['id'] ? 'selected' : ''}}>{{$grupo['grupo']}}</option>
+                         <option value="{{$grupo['id']}}" {{old('grupo_id') == $grupo['id'] ? 'selected' : ''}}>{{$grupo['grupo']}}</option>
                          @endforeach
                          </select>
                         </div>
